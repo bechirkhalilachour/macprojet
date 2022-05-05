@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:macprojet/components/custom_surfix_icon.dart';
 import 'package:macprojet/components/default_button.dart';
 import 'package:macprojet/components/form_error.dart';
-import 'package:macprojet/screens/otp/otp_screen.dart';
 import 'package:macprojet/screens/sign_in/sign_in_screen.dart';
 
-import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
