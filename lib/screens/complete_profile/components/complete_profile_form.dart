@@ -1,14 +1,20 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:macprojet/components/custom_surfix_icon.dart';
 import 'package:macprojet/components/default_button.dart';
 import 'package:macprojet/components/form_error.dart';
 import 'package:macprojet/screens/sign_in/sign_in_screen.dart';
+import 'package:macprojet/services/user_services.dart';
+import 'package:macprojet/models/user';
 
 import '../../../size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
   @override
   _CompleteProfileFormState createState() => _CompleteProfileFormState();
+  String? email, password;
+  CompleteProfileForm(this.email, this.password);
 }
 
 class _CompleteProfileFormState extends State<CompleteProfileForm> {
@@ -18,6 +24,17 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   String? lastName;
   String? phoneNumber;
   String? address;
+
+  void showSnackbar(BuildContext context, String error) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(error),
+      duration: Duration(seconds: 3),
+      action: SnackBarAction(
+        label: "Click here",
+        onPressed: () {},
+      ),
+    ));
+  }
 
   void addError({String? error}) {
     if (!errors.contains(error))
@@ -52,7 +69,27 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
             text: "continue",
             press: () {
               if (_formKey.currentState!.validate()) {
-                Navigator.pushNamed(context, SignInScreen.routeName);
+                _formKey.currentState!.save();
+                UserServices()
+                    .register(User.register(
+                        firstName: firstName,
+                        lastName: lastName,
+                        password: widget.password,
+                        username: "username",
+                        email: widget.email,
+                        photo: "photo",
+                        phone: phoneNumber,
+                        codePostal: 1200,
+                        location: address))
+                    .then((res) {
+                  if (res.statusCode == 400) {
+                    Map<String, dynamic> response = json.decode(res.body);
+                    showSnackbar(context, response["error"]);
+                    return;
+                  }
+                  print("we're good");
+                  Navigator.pushNamed(context, SignInScreen.routeName);
+                });
               }
             },
           ),

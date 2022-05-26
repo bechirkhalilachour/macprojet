@@ -1,0 +1,96 @@
+// To parse this JSON data, do
+//
+//     final user = userFromJson(jsonString);
+
+import 'dart:convert';
+
+User userFromJson(String str) => User.fromJson(json.decode(str));
+
+String userToJson(User data) => json.encode(data.toJson());
+
+class User {
+    User({
+        required this.statut ,
+        required this.photo,
+        required this.codePostal,
+        required this.createdAt,
+        required this.active,
+        required this.id,
+        required this.firstName,
+        required this.lastName,
+        required this.password,
+        required this.username,
+        required this.email,
+        required this.phone,
+        required this.location,
+        required this.v,
+        required this.pictureProfile,
+        required this.userId,
+    });
+
+    User.login({required this.email, required this.password});
+    User.register({required this.firstName, required this.lastName,
+            required this.password,
+            required this.username,
+            required this.email,
+            required this.photo,
+            required this.phone,
+            required this.codePostal,
+            required this.location
+    });
+
+    String? statut;
+    String? photo;
+    int? codePostal;
+    String? createdAt;
+    bool? active;
+    String? id;
+    String? firstName;
+    String? lastName;
+    String? password;
+    String? username;
+    String? email;
+    String? phone;
+    String? location;
+    int? v;
+    String? pictureProfile;
+    String? userId;
+
+    factory User.fromJson(Map<String, dynamic> json) => User(
+        statut: json["statut"],
+        photo: json["photo"],
+        codePostal: json["codePostal"],
+        createdAt: json["createdAt"],
+        active: json["active"],
+        id: json["_id"],
+        firstName: json["firstName"],
+        lastName: json["lastName"],
+        password: json["password"],
+        username: json["username"],
+        email: json["email"],
+        phone: json["phone"],
+        location: json["location"],
+        v: json["__v"],
+        pictureProfile: json["pictureProfile"],
+        userId: json["id"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "statut": statut,
+        "photo": photo,
+        "codePostal": codePostal,
+        "createdAt": createdAt,
+        "active": active,
+        "_id": id,
+        "firstName": firstName,
+        "lastName": lastName,
+        "password": password,
+        "username": username,
+        "email": email,
+        "phone": phone,
+        "location": location,
+        "__v": v,
+        "pictureProfile": pictureProfile,
+        "id": userId,
+    };
+}

@@ -53,7 +53,12 @@ class _SignUpFormState extends State<SignUpForm> {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 // if all are valid then go to success screen
-                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+                //Navigator.pushNamed(context, CompleteProfileScreen(email, password).routeName;
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            CompleteProfileScreen(email, password)));
               }
             },
           ),

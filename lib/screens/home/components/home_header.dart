@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:macprojet/models/current_user.dart';
 
 import '../../../size_config.dart';
 import 'icon_btn_with_counter.dart';
@@ -28,3 +29,27 @@ class HomeHeader extends StatelessWidget {
     );
   }
 }
+
+  /*@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Text("ypypypyoyoyoyoyyo"),
+      drawer: Drawer(
+          child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            child: Text(CurrentUser.email!),
+            decoration: BoxDecoration(color: Colors.blue),
+          ),
+          ListTile(
+            title: Text("Item"),
+            onTap: () {
+              print("item pressed");
+            },
+          )
+        ],
+      )),
+    );
+  }
+}*/
