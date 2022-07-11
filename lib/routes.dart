@@ -2,8 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:macprojet/screens/cart/cart_screen.dart';
 import 'package:macprojet/screens/complete_profile/complete_profile_screen.dart';
 import 'package:macprojet/screens/details/details_screen.dart';
+import 'package:macprojet/screens/favoris/favoris_screen.dart';
+import 'package:macprojet/screens/favoris/favorite_list.dart';
 import 'package:macprojet/screens/forgot_password/forgot_password_screen.dart';
 import 'package:macprojet/screens/home/home_screen.dart';
+import 'package:macprojet/screens/market/components/market_data.dart';
 import 'package:macprojet/screens/otp/otp_screen.dart';
 import 'package:macprojet/screens/profile/profile_screen.dart';
 import 'package:macprojet/screens/sign_in/sign_in_screen.dart';
@@ -25,4 +28,6 @@ final Map<String, WidgetBuilder> routes = {
   CartScreen.routeName: (context) => CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   NewsScreen.routeName: (context) => NewsScreen(),
+  MarketData.routeName: (context) => MarketData(),
+  FavoriteList.routeName: (context) => FavoriteList(),
 };

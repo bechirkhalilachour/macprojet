@@ -38,6 +38,9 @@ dependencies:
   flutter_svg: ^0.22.0 # help us to use SVG in our app
   provider: ^6.0.0 # for State management
   http: ^0.13.0
+  font_awesome_flutter: ^10.1.0
+  fl_chart: ^0.55.0
+  # syncfusion_flutter_charts: ^20.1.60
   shared_preferences:
 
 dev_dependencies:

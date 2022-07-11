@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:macprojet/models/current_user.dart';
+import 'package:macprojet/screens/home/components/chart.dart';
+import 'package:macprojet/screens/home/components/chart2.dart';
+import 'package:macprojet/screens/home/components/chart3.dart';
+import 'package:macprojet/screens/home/components/chart4.dart';
 
 import '../../../size_config.dart';
 
@@ -55,7 +59,11 @@ class Body extends StatelessWidget {
               SizedBox(height: getProportionateScreenHeight(20)),
               HomeHeader(),
               SizedBox(height: getProportionateScreenWidth(10)),
-              SpecialOffers(),
+              // SpecialOffers(),
+              LineChartSample1(),
+              LineChartSample2(),
+              // LineChartSample7(),
+              PieChartSample1(),
             ],
           ),
         ),
