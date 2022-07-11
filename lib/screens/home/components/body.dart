@@ -21,7 +21,12 @@ class Body extends StatelessWidget {
                 CurrentUser.email!,
                 textAlign: TextAlign.center,
               ),
-              decoration: BoxDecoration(color: Colors.blue),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage('assets/images/drawer.jpg'),
+                ),
+              ),
             ),
             ListTile(
               title: Text("Item"),
