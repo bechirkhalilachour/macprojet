@@ -156,6 +156,9 @@ class _MyFavoriteListState extends State<MyFavoriteList> {
                                 codeMN: marketData.codeMN,
                                 date: marketData.heure,
                                 market: marketData,
+                                marketIdFavorite: marketIdFavorite,
+                                context :context,
+
                               ))
                           .toList(),
                     )
@@ -176,7 +179,7 @@ class _MyFavoriteListState extends State<MyFavoriteList> {
 
 
 Widget marketNewsContainer(
-    {height, width, codeISIN, groupe, price, date, codeMN,name ,market, onPress}) {
+    {height, width, codeISIN, groupe, price, date, codeMN,name ,market,List? marketIdFavorite ,context,onPress}) {
   return GestureDetector(
     onTap: onPress,
     child: Container(
@@ -207,6 +210,7 @@ Widget marketNewsContainer(
                   color: Color.fromARGB(255, 255, 42, 5),
                 ),
                 onPressed: () {
+                  deleteFavoris(codeISIN ,marketIdFavorite, context);
                   // login(market);
                 },
               ),
@@ -248,4 +252,23 @@ Widget marketNewsContainer(
       ),
     ),
   );
+}
+Future<dynamic> deleteFavoris(String marketId, List? marketIdFavorite, context) async {
+  print('checking the marketId $marketId checking the marketObject $marketIdFavorite ');
+  final existingIndex =
+        marketIdFavorite!.indexWhere((favorite) => favorite == marketId);
+        print('checking the existingIndex $existingIndex');
+        if (existingIndex >= 0) {
+      marketIdFavorite.removeAt(existingIndex);
+    } 
+  print('checking the marketIdFavorite what $marketIdFavorite');
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  // marketIdFavorite.add(market.codeISIN);
+  sharedPreferences.setString("favoriteMarketId", jsonEncode(marketIdFavorite));
+  print('checking the idsss $marketIdFavorite');
+  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => MyFavoriteList()),
+                                  );
 }

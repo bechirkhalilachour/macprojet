@@ -224,7 +224,7 @@ Widget marketNewsContainer(
                     color: Color.fromARGB(255, 255, 42, 5),
                   ),
                   onPressed: () {
-                    addFavorite(market, marketIdFavorite);
+                    // addFavorite(market, marketIdFavorite);
                   },
                 ),
               ] else ...[
