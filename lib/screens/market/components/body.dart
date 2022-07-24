@@ -203,6 +203,7 @@ Widget marketNewsContainer(
       width: width,
       child: Padding(
         padding: const EdgeInsets.all(15),
+
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -214,6 +215,28 @@ Widget marketNewsContainer(
                       fontSize: 15,
                       color: Colors.black,
                       fontWeight: FontWeight.w600),
+
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Text(
+                'Name $name',
+                style: const TextStyle(
+                    fontSize: 15,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
+              ),
+              if (isFavoritOne) ...[
+                IconButton(
+                  icon: Icon(
+                    Icons.favorite,
+                    size: 20.0,
+                    color: Color.fromARGB(255, 255, 42, 5),
+                  ),
+                  onPressed: () {
+                    // addFavorite(market, marketIdFavorite);
+                  },
                 ),
                 if (isFavoritOne) ...[
                   IconButton(
